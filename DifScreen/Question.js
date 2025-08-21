@@ -67,7 +67,7 @@ const IntroQuestionsScreen = ({ texts, points, setPoints, navigation }) => {
     }
 
     setPoints(newPoints);
-    navigation.navigate('BmiCalculator');
+    navigation.navigate('ResultQuestion', { points: newPoints });
   };
 
   return (

@@ -1,4 +1,3 @@
-// screens/BmiCalculatorScreen.js
 import React, { useState } from 'react';
 import {
   View,
@@ -14,8 +13,8 @@ const BmiCalculatorScreen = ({ texts, navigation }) => {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   // Feste Werte, keine Auswahl im UI
-  const gender = 'male';  
-  const units = 'metric'; 
+  const gender = 'male';
+  const units = 'metric';
 
   const [bmiResult, setBmiResult] = useState(null);
   const [bmiCategory, setBmiCategory] = useState('');
@@ -81,8 +80,11 @@ const BmiCalculatorScreen = ({ texts, navigation }) => {
 
     setBmiCategory(category);
 
-    navigation.navigate('Journal');
-  };
+    navigation.navigate('BMIResult', {
+      bmiResult: bmi.toFixed(2),
+      bmiCategory: category,
+    });
+  }; // <-- close calculateBmi here
 
   return (
     <View style={styles.container}>
@@ -113,7 +115,8 @@ const BmiCalculatorScreen = ({ texts, navigation }) => {
         value={weight}
       />
 
-      <Button title={texts.calculate_bmi} onPress={calculateBmi} />
+      <Button title={texts.calculate_bmi} 
+      onPress={calculateBmi} />
 
       {bmiResult !== null && (
         <View style={styles.resultContainer}>

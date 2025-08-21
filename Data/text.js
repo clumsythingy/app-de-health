@@ -47,7 +47,10 @@ export const TEXTS = {
     "exit": "quit",
     "select_language": "Select Language",
     "calculate_bmi": "Calculate BMI",
-    "submit": "Submit"
+    "submit": "Submit",
+    "result_title": "Your Results",
+    "points_earned": "Points earned",
+    "continue": "Continue",
   },
   "de": {
     "name_prompt": "Bitte gib deinen Namen ein",
@@ -96,6 +99,9 @@ export const TEXTS = {
     "exit": "ende",
     "select_language": "Sprache auswählen",
     "calculate_bmi": "BMI berechnen",
-    "submit": "Absenden"
+    "submit": "Absenden",
+    "result_title":"Deine Ergebnisse",
+    "points_earned": "Erreichte Punkte",
+    "continue": "Weiter",
   },
 };
