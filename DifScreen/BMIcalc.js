@@ -8,14 +8,15 @@ import {
   StyleSheet,
   Alert,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker'; // Wichtig: React Native Picker importieren
 
 const BmiCalculatorScreen = ({ texts, navigation }) => {
   const [age, setAge] = useState('');
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
-  const [gender, setGender] = useState('male');
-  const [units, setUnits] = useState('metric');
+  // Feste Werte, keine Auswahl im UI
+  const gender = 'male';  
+  const units = 'metric'; 
+
   const [bmiResult, setBmiResult] = useState(null);
   const [bmiCategory, setBmiCategory] = useState('');
 
@@ -80,7 +81,6 @@ const BmiCalculatorScreen = ({ texts, navigation }) => {
 
     setBmiCategory(category);
 
-    // Navigation zum Journal Screen
     navigation.navigate('Journal');
   };
 
@@ -96,6 +96,7 @@ const BmiCalculatorScreen = ({ texts, navigation }) => {
         value={age}
       />
 
+      {/* Weil units = metric */}
       <TextInput
         style={styles.input}
         placeholder={texts.height_cm}
@@ -112,27 +113,9 @@ const BmiCalculatorScreen = ({ texts, navigation }) => {
         value={weight}
       />
 
-      <Picker
-        selectedValue={gender}
-        style={styles.picker}
-        onValueChange={(itemValue) => setGender(itemValue)}
-      >
-        <Picker.Item label={texts.male} value="male" />
-        <Picker.Item label={texts.female} value="female" />
-      </Picker>
-
-      <Picker
-        selectedValue={units}
-        style={styles.picker}
-        onValueChange={(itemValue) => setUnits(itemValue)}
-      >
-        <Picker.Item label={texts.metric} value="metric" />
-        <Picker.Item label={texts.imperial} value="imperial" />
-      </Picker>
-
       <Button title={texts.calculate_bmi} onPress={calculateBmi} />
 
-      {bmiResult && (
+      {bmiResult !== null && (
         <View style={styles.resultContainer}>
           <Text style={styles.resultText}>
             {texts.bmi_result
@@ -163,10 +146,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
-  },
-  picker: {
-    height: 50,
-    marginBottom: 10,
   },
   resultContainer: {
     marginTop: 20,
